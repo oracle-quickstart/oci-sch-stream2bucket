@@ -1,0 +1,71 @@
+# Copyright (c) 2020, Oracle and/or its affiliates. All rights reserved.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+
+title: "Quick start to create Service Connector"
+stackDescription: "A Quick start to showcase the use of service connectors for archiving of streams."
+schemaVersion: 1.1.0
+version: "20200301"
+locale: "en"
+
+variableGroups:
+- title: ${Messages.solutionsHub.generalConfig()}
+  visible: false
+  variables:
+  - tenancy_ocid
+  - current_user_ocid
+
+- title: ${Messages.solutionsHub.optionalConfig()}
+  visible: true  
+  variables:
+  - compartment_ocid
+  - region
+  - bucket_name
+  - stream_pool_name
+  - stream_name
+  - stream_partitions
+  - sch_connector_name
+
+variables:
+
+  compartment_ocid:
+    type: oci:identity:compartment:id
+    required: true
+    title: ${Messages.solutionsHub.genericVariables.compartment.title()}
+    description: ${Messages.solutionsHub.genericVariables.compartment.description()}
+
+  region:
+    type: oci:identity:region:name
+    required: true
+    title: "Region"
+    description: "Region where the stack will be deployed."
+
+  bucket_name:
+    type: string
+    required: true
+    title: "Bucket Name"
+    description: "Name of the bucket where logs will be archived."
+
+  stream_pool_name:
+    type: string
+    required: true
+    title: "Name of the Stream pool."
+    description: "Name of the stream pool."
+
+  stream_name:
+    type: string
+    required: true
+    title: "Stream Name"
+    description: "Name of the stream to archive."
+
+  stream_partitions:
+    type: string
+    required: true
+    title: "Stream Partitions"
+    description: "No of partitions in a stream, required for creation."
+
+  sch_connector_name:
+    type: string
+    required: true
+    title: "Connetor name"
+    description: "Name of the service connector."
+
